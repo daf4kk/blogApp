@@ -1,9 +1,9 @@
 export interface IUser{
-    id: number,
+    id?: number,
     email: string,
     name: string,
     password: string,
-    blogs: string[]
+    blogs: string[] | []
 }
 export interface IBlog{
     id: string,

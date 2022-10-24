@@ -1,12 +1,48 @@
 {
-    "users": [
-        {"id" : 1, "email": "Andrey@mail.ru", "name": "Andrey", "password": "qwe", "userBlogs": ["qwe", "asd"]},
-        {"id" : 2, "email": "Roma@mail.ru", "name": "Roma", "password": "qwe", "userBlogs": ["qwe", "asd"]},
-        {"id" : 3, "email": "Ilya@mail.ru", "name": "Ilya", "password": "qwe", "userBlogs": ["qwe", "asd"]}
-    ],
-    "blogs": [
-        {"id": "efgrg", "ownerId": 1, "imgUrl": "", "title": "Blog", "body": "lorem lorem"},
-        {"id": "efgrg", "ownerId": 2, "imgUrl": "", "title": "Blog", "body": "lorem lorem"},
-        {"id": "efgrg", "ownerId": 3, "imgUrl": "", "title": "Blog", "body": "lorem lorem"}
-    ]
-  }
+  "users": [
+    {
+      "id": 1,
+      "email": "Andrey@mail.ru",
+      "name": "Andrey",
+      "password": "qwe",
+      "userBlogs": [
+        "qwe",
+        "asd"
+      ]
+    },
+    {
+      "id": 2,
+      "email": "Roma@mail.ru",
+      "name": "Roma",
+      "password": "qwe",
+      "userBlogs": [
+        "qwe",
+        "asd"
+      ]
+    }
+    
+  ],
+  "blogs": [
+    {
+      "id": "efgrg",
+      "ownerId": 1,
+      "imgUrl": "",
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": "efgrg",
+      "ownerId": 2,
+      "imgUrl": "",
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": "efgrg",
+      "ownerId": 3,
+      "imgUrl": "",
+      "title": "Blog",
+      "body": "lorem lorem"
+    }
+  ]
+}

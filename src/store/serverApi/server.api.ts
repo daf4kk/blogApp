@@ -6,22 +6,32 @@ export const serverApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:5000/'
     }),
+    tagTypes: ['Post'],
     endpoints: build => ({
         fetchUsers: build.query({
             query: () => ({
                 url: 'users'
-            })
+            }),
+            providesTags: result => ['Post']
         }),
-        fetchUser: build.query<IUser[], string>({
+        fetchUser: build.query<IUser, string>({
             query: (search:string) => ({
                 url: 'users',
                 params: {
                     q: search
                 }
             })
+        }),
+        pushUser: build.mutation<IUser, IUser>({
+            query: (user) => ({
+                url: 'users',
+                method: 'POST',
+                body: user
+            }),
+            invalidatesTags: ['Post']
         })
 
         //<IUser[], string>
     })
 })
-export const {useFetchUsersQuery, useFetchUserQuery} = serverApi;
+export const {useFetchUsersQuery, useLazyFetchUserQuery, usePushUserMutation} = serverApi;

@@ -9,7 +9,7 @@
         @apply w-[350px] h-[50px] pl-2 text-xl text-cyan-300 rounded-lg  bg-cyan-500 focus:outline-none focus:outline-4 focus:outline-cyan-700 placeholder-emerald-100 shadow-lg
     }
 
-    .login-button{
+    .auth-button{
         @apply p-2  text-xl text-emerald-50 rounded-lg bg-cyan-500 shadow-xl font-medium transition-colors duration-300 hover:text-slate-600
     }
 }

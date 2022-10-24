@@ -1,25 +1,20 @@
 import React, {useState, Dispatch, SetStateAction} from 'react';
-import { useFetchUsersQuery } from '../store/serverApi/server.api';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../hooks/useSelector';
-import { useActions } from '../hooks/actions';
+import {useFetchUsersQuery, usePushUserMutation } from '../store/serverApi/server.api';
+
 import { IUser } from '../types/serverModels';
 import logoIcon from '../imgs/logo.png';
 import errorIcon from '../imgs/error.png';
-
+import { Link} from 'react-router-dom';
 interface Props{
     setIsLoged: Dispatch<SetStateAction<IUser | null>>
 }
 
-const LoginPage:React.FC<Props> = ({setIsLoged}) => {
-
-    // const {isLoading, isError, data} = useFetchUsersQuery('');
-    // const {favourites} = useAppSelector(state => state.favourites)
-    // const {addFavourite, removeFavourite} = useActions();
-    
+const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
+    const [pushUser] = usePushUserMutation()
     const [error, setError] = useState<string | null>(null)
     const {data:DBUsers} = useFetchUsersQuery('')
     const [userData, setUserData] = useState({
+        name: '',
         email: '',
         password: ''
     })
@@ -32,28 +27,31 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
     }
 
     function checkForValidate(){
-        const {email, password} = userData;
-        if (!email || !password ){
-            setError('Поля должны быть заполнены')
+        const {name,email,password} = userData;
+        if (!name || email.length < 9 || !password){
+            setError(`Введите корректные данные`)
             return
         }
-        const user = DBUsers.find((user:IUser) => user.email === email)
-        if (!user){
-            setError(`Пользователь не найден`);
+        
+        const checkForExistingUser = DBUsers.find((user:IUser) => user.email === email);
+        if (checkForExistingUser){
+            setError(`Данная почта занята`)
             return
         }
-        if (user.password !== password){
-            setError(`Неверный пароль`);
-            return
+        const newUser:IUser = {
+            email,
+            name,
+            password,
+            blogs: []
         }
-        setIsLoged(user)
-        console.log('loged in')
-        return
+        pushUser(newUser)
+        setIsLoged(newUser)
+        //redirect после успешной регистраций
     }
 
     return (
         <div className='absolute w-full h-full bg-cyan-900 flex justify-center'>
-            <div className='w-[600px] h-[500px] bg-cyan-600 mt-[10%] rounded-full flex flex-col justify-center items-center'>
+            <div className='w-[600px] h-[600px] bg-cyan-600 mt-[10%] rounded-full flex flex-col justify-center items-center'>
                 <a href = 'https://github.com/daf4kk' target= '_blank' rel = 'noreferrer'><img src = {logoIcon} alt = 'logo' className = 'relative bottom-5 cursor-pointer'></img></a>
                 {error && (
                 <div className='flex items-center mb-2 w-[350px]'>
@@ -61,9 +59,16 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
                     <h1 className=' text-red-600 text-xl font-semibold ml-2'>{error}</h1>
                 </div>
                 )}
-                
                 <input 
                 className = 'input' 
+                type = 'text' placeholder='Введите имя'
+                spellCheck = 'false'
+                name = 'name'
+                autoComplete='off'
+                onChange={changeHandler}
+                ></input>
+                <input 
+                className = 'input mt-3' 
                 type = 'text' placeholder='Введите почту'
                 spellCheck = 'false'
                 name = 'email'
@@ -79,8 +84,8 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
                 onChange={changeHandler}
                 ></input>
                 <div className='relative w-[350px] top-5 text-xl flex justify-between'>
-                    <button className='auth-button hover:bg-lime-500' type = 'submit' onClick={checkForValidate}>Войти</button>
-                    <Link to = '/registration' className='auth-button'>Регистрация</Link>
+                    <button className='auth-button hover:bg-lime-500' type = 'submit' onClick={checkForValidate}>Зарегистрироваться</button>
+                    <Link to = '/' className = 'auth-button'>Войти</Link>
                 </div>
                 
             </div>
@@ -88,4 +93,4 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
     );
 };
 
-export default LoginPage;
+export default RegistrationPage;
