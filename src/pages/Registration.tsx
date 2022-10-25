@@ -46,7 +46,7 @@ const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
         }
         pushUser(newUser)
         setIsLoged(newUser)
-        //redirect после успешной регистраций
+        localStorage.setItem('active-user-email', email)
     }
 
     return (

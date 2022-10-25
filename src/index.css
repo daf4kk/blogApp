@@ -12,4 +12,7 @@
     .auth-button{
         @apply p-2  text-xl text-emerald-50 rounded-lg bg-cyan-500 shadow-xl font-medium transition-colors duration-300 hover:text-slate-600
     }
+    .header-button{
+        @apply ml-3 cursor-pointer text-lg font-medium p-2 bg-cyan-400 rounded-xl shadow-md transition-all duration-150 hover:bg-emerald-200 
+    }
 }

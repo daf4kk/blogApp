@@ -47,10 +47,11 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
             return
         }
         setIsLoged(user)
-        console.log('loged in')
+        localStorage.setItem('active-user-email', email)
         return
     }
 
+    
     return (
         <div className='absolute w-full h-full bg-cyan-900 flex justify-center'>
             <div className='w-[600px] h-[500px] bg-cyan-600 mt-[10%] rounded-full flex flex-col justify-center items-center'>
