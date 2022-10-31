@@ -16,6 +16,7 @@ const App = () => {
     if (userFromLS){
       fetchUser(userFromLS);
       if (user){
+        console.log(user.name)
         setIsLoged(user)
       }
     }
@@ -25,7 +26,7 @@ const App = () => {
     <Routes>
       <Route path = '/' element = { isLoged ? <Navigate to = '/home'></Navigate> : <LoginPage setIsLoged = {setIsLoged}/> }></Route>
       <Route path = '/registration' element = {isLoged ? <Navigate to = '/home'></Navigate> : <RegistrationPage setIsLoged = {setIsLoged}/>}></Route>
-      <Route path = '/home' element = { isLoged ? <HomePage setIsLoged={setIsLoged}/> : <Navigate to = '/'></Navigate>} ></Route>
+      <Route path = '/home' element = { isLoged ? <HomePage setIsLoged={setIsLoged} isLoged = {isLoged}/> : <Navigate to = '/'></Navigate>} ></Route>
     </Routes>
   );
 };

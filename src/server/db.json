@@ -19,8 +19,14 @@
         "qwe",
         "asd"
       ]
+    },
+    {
+      "email": "Ilya@mail.ru",
+      "name": "Ilya",
+      "password": "qwe",
+      "blogs": [],
+      "id": 3
     }
-    
   ],
   "blogs": [
     {

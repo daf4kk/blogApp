@@ -1,3 +1,4 @@
+import { IBlog } from './../../types/serverModels';
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import { IUser } from '../../types/serverModels';
 
@@ -6,21 +7,22 @@ export const serverApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:5000/'
     }),
-    tagTypes: ['Post'],
+    tagTypes: ['Users', 'Blogs'],
     endpoints: build => ({
         fetchUsers: build.query({
             query: () => ({
                 url: 'users'
             }),
-            providesTags: result => ['Post']
+            providesTags: result => ['Users']
         }),
         fetchUser: build.query<IUser, string>({
             query: (search:string) => ({
                 url: 'users',
                 params: {
-                    q: search
+                    q: search,
                 }
-            })
+            }),
+            transformResponse: (response:IUser[]) => response[0]
         }),
         pushUser: build.mutation<IUser, IUser>({
             query: (user) => ({
@@ -28,10 +30,31 @@ export const serverApi = createApi({
                 method: 'POST',
                 body: user
             }),
-            invalidatesTags: ['Post']
+            invalidatesTags: ['Users']
+        }),
+        fetchBlogs: build.query({
+            query: () => ({
+                url: 'blogs'
+            }),
+            providesTags: result => ['Blogs']
+        }),
+        fetchBlog: build.query<IBlog, string>({
+            query: (search:string) => ({
+                url: 'blogs',
+                params: {
+                    q: search
+                }
+            })
+        }),
+        removeBlog: build.mutation<IBlog, IBlog>({
+            query: (blog: IBlog) => ({
+                url: `blogs/${blog.id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Blogs']
         })
 
         //<IUser[], string>
     })
 })
-export const {useFetchUsersQuery, useLazyFetchUserQuery, usePushUserMutation} = serverApi;
+export const {useFetchUsersQuery, useLazyFetchUserQuery, usePushUserMutation, useFetchBlogsQuery, useLazyFetchBlogQuery, useRemoveBlogMutation} = serverApi;

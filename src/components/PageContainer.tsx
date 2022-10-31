@@ -10,7 +10,7 @@ interface Props{
 const PageContainer:React.FC<Props> = ({setIsLoged, children}) => {
     return (
         <>
-            <header className = 'w-[1500px] h-[65px] bg-cyan-500 m-auto mt-2 p-4 rounded-lg flex items-center justify-between shadow-2xl'>
+            <header className = 'w-[1900px] h-[65px] bg-cyan-500 m-auto mt-2 p-4 rounded-lg flex items-center justify-between shadow-2xl 2xl:w-[1200px] xl:w-[1000px] lg:w-[900px]'>
                 <a href = 'https://github.com/daf4kk' target= '_blank' rel = 'noreferrer'><img src = {logoIcon} alt = 'logo' className = 'cursor-pointer w-[50px] h-[50px] '></img></a>
                 <ul className='flex'>
                     <Link to = '/home' className='header-button'>Домой</Link>
@@ -23,7 +23,7 @@ const PageContainer:React.FC<Props> = ({setIsLoged, children}) => {
                     }}>Выйти</li>
                 </ul>
             </header>
-            <div className='w-[1500px] h-[500px] m-auto mt-2 bg-cyan-500 shadow-2xl rounded-lg'>
+            <div className='w-[1900px] h-auto m-auto mt-2 bg-cyan-500 shadow-2xl rounded-lg flex justify-center 2xl:w-[1200px] xl:w-[1000px] lg:w-[900px]'>
                 {children}
             </div>
         </>

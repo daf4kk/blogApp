@@ -15,4 +15,23 @@
     .header-button{
         @apply ml-3 cursor-pointer text-lg font-medium p-2 bg-cyan-400 rounded-xl shadow-md transition-all duration-150 hover:bg-emerald-200 
     }
+
+    .blog-button{
+        @apply p-2 rounded shadow-md text-lg hover:transition-colors duration-300 xl:text-base xl:p-2 
+    }
 }
+#root{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+/* Scroll */
+::-webkit-scrollbar-thumb {
+    background: #06b6d4;
+    border-radius: 5px;
+}
+::-webkit-scrollbar {
+    width: 12px;
+}
+/* ::-webkit-scrollbar-button{
+    height: 50px;
+} */
