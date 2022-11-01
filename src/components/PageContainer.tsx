@@ -14,7 +14,7 @@ const PageContainer:React.FC<Props> = ({setIsLoged, children}) => {
                 <a href = 'https://github.com/daf4kk' target= '_blank' rel = 'noreferrer'><img src = {logoIcon} alt = 'logo' className = 'cursor-pointer w-[50px] h-[50px] '></img></a>
                 <ul className='flex'>
                     <Link to = '/home' className='header-button'>Домой</Link>
-                    <li className='header-button'>Любимые посты</li>
+                    <Link to = 'favourites' className='header-button'>Любимые посты</Link>
                     <li className='header-button'>Мои посты</li>
                     <li className='header-button'>Создать пост</li>
                     <li className='header-button hover:bg-red-400' onClick = {() => {
@@ -23,7 +23,7 @@ const PageContainer:React.FC<Props> = ({setIsLoged, children}) => {
                     }}>Выйти</li>
                 </ul>
             </header>
-            <div className='w-[1900px] h-auto m-auto mt-2 bg-cyan-500 shadow-2xl rounded-lg flex justify-center 2xl:w-[1200px] xl:w-[1000px] lg:w-[900px]'>
+            <div className='w-[1900px] h-auto m-auto mt-2 mb-5 bg-cyan-500 shadow-2xl rounded-lg flex justify-center 2xl:w-[1200px] xl:w-[1000px] lg:w-[900px]'>
                 {children}
             </div>
         </>

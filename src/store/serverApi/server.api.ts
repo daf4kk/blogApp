@@ -32,9 +32,13 @@ export const serverApi = createApi({
             }),
             invalidatesTags: ['Users']
         }),
-        fetchBlogs: build.query({
-            query: () => ({
-                url: 'blogs'
+        fetchBlogs: build.query<IBlog[], number>({
+            query: (limit:number) => ({
+                url: 'blogs',
+                params: {
+                    _limit: limit
+                }
+
             }),
             providesTags: result => ['Blogs']
         }),

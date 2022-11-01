@@ -3,11 +3,17 @@ export interface IUser{
     email: string,
     name: string,
     password: string,
-    blogs: string[] | []
-}
+    blogs: string[] | [],
+    favouriteBlogs: string[] | []
+} 
 export interface IBlog{
-    id: string,
-    imgUrl: string,
+    id: number,
+    blogId: string,
+    ownerId: number,
+    imgId: string,
+    theme: string,
+    date: string,
+    readTime: number,
     title: string,
     body: string
 }

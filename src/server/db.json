@@ -8,6 +8,11 @@
       "userBlogs": [
         "qwe",
         "asd"
+      ],
+      "favouriteBlogs": [
+        "efgrg",
+        "efgrg5",
+        "efgrg8"
       ]
     },
     {
@@ -18,37 +23,139 @@
       "userBlogs": [
         "qwe",
         "asd"
+      ],
+      "favouriteBlogs": [
+        "efgrg",
+        "efgrg5",
+        "efgrg8"
       ]
+      
     },
     {
       "email": "Ilya@mail.ru",
       "name": "Ilya",
       "password": "qwe",
       "blogs": [],
-      "id": 3
+      "id": 3,
+      "favouriteBlogs": [
+        "efgrg",
+        "efgrg5",
+        "efgrg8"
+      ]
     }
   ],
   "blogs": [
     {
-      "id": "efgrg",
+      "id": 1,
+      "blogId": "efgrg1",
       "ownerId": 1,
-      "imgUrl": "",
+      "imgId": "1",
+      "theme": "Css",
+      "date": "1.11.22",
+      "readTime": 9,
       "title": "Blog",
       "body": "lorem lorem"
     },
     {
-      "id": "efgrg",
-      "ownerId": 2,
-      "imgUrl": "",
+      "id": 2,
+      "blogId": "efgrg2",
+      "ownerId": 1,
+      "imgId": "2",
+      "theme": "js",
+      "date": "1.11.22",
+      "readTime": 9,
       "title": "Blog",
       "body": "lorem lorem"
     },
     {
-      "id": "efgrg",
-      "ownerId": 3,
-      "imgUrl": "",
+      "id": 3,
+      "blogId": "efgrg3",
+      "ownerId": 1,
+      "imgId": "3",
+      "theme": "react",
+      "date": "1.11.22",
+      "readTime": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 4,
+      "blogId": "efgrg4",
+      "ownerId": 1,
+      "imgId": "4",
+      "theme": "tailwind",
+      "date": "1.11.22",
+      "readTime": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 5,
+      "blogId": "efgrg5",
+      "ownerId": 1,
+      "imgId": "5",
+      "theme": "html",
+      "date": "1.11.22",
+      "readTime": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 6,
+      "blogId": "efgrg6",
+      "ownerId": 1,
+      "imgId": "6",
+      "theme": "scss",
+      "date": "1.11.22",
+      "readTime": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 7,
+      "blogId": "efgrg7",
+      "ownerId": 1,
+      "imgId": "7",
+      "theme": "json-server",
+      "date": "1.11.22",
+      "read-time": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 8,
+      "blogId": "efgrg8",
+      "ownerId": 1,
+      "imgId": "6",
+      "theme": "react-router",
+      "date": "1.11.22",
+      "readTime": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 9,
+      "blogId": "efgrg9",
+      "ownerId": 1,
+      "imgId": "1",
+      "theme": "typeScript",
+      "date": "1.11.22",
+      "readTime": 9,
+      "title": "Blog",
+      "body": "lorem lorem"
+    },
+    {
+      "id": 10,
+      "blogId": "efgrg10",
+      "ownerId": 1,
+      "imgId": "2",
+      "theme": "nextJS",
+      "date": "1.11.22",
+      "readTime": 9,
       "title": "Blog",
       "body": "lorem lorem"
     }
+    
+    
   ]
 }

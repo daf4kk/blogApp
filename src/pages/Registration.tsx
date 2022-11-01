@@ -42,7 +42,8 @@ const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
             email,
             name,
             password,
-            blogs: []
+            blogs: [],
+            favouriteBlogs: []
         }
         pushUser(newUser)
         setIsLoged(newUser)
@@ -51,7 +52,7 @@ const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
 
     return (
         <div className='absolute w-full h-full bg-cyan-900 flex justify-center'>
-            <div className='w-[600px] h-[600px] bg-cyan-600 mt-[10%] rounded-full flex flex-col justify-center items-center'>
+            <div className='w-[600px] h-[600px] bg-cyan-600 mt-[10%] rounded-full flex flex-col justify-center items-center 2xl:mt-[10%] xl:mt-[7%] lg:mt-[5%]'>
                 <a href = 'https://github.com/daf4kk' target= '_blank' rel = 'noreferrer'><img src = {logoIcon} alt = 'logo' className = 'relative bottom-5 cursor-pointer'></img></a>
                 {error && (
                 <div className='flex items-center mb-2 w-[350px]'>
