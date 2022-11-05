@@ -6,13 +6,14 @@ import logoIcon from '../imgs/logo.png';
 import errorIcon from '../imgs/error.png';
 import { Link} from 'react-router-dom';
 interface Props{
-    setIsLoged: Dispatch<SetStateAction<IUser | null>>
+    setIsLoged: Dispatch<SetStateAction<IUser | null>>,
+    users: IUser[]
 }
 
-const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
+const RegistrationPage:React.FC<Props> = ({setIsLoged, users}) => {
     const [pushUser] = usePushUserMutation()
     const [error, setError] = useState<string | null>(null)
-    const {data:DBUsers} = useFetchUsersQuery('')
+    // const {data:DBUsers} = useFetchUsersQuery('')
     const [userData, setUserData] = useState({
         name: '',
         email: '',
@@ -33,7 +34,7 @@ const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
             return
         }
         
-        const checkForExistingUser = DBUsers.find((user:IUser) => user.email === email);
+        const checkForExistingUser = users.find((user:IUser) => user.email === email);
         if (checkForExistingUser){
             setError(`Данная почта занята`)
             return
@@ -48,6 +49,7 @@ const RegistrationPage:React.FC<Props> = ({setIsLoged}) => {
         pushUser(newUser)
         setIsLoged(newUser)
         localStorage.setItem('active-user-email', email)
+        console.log('reg')
     }
 
     return (

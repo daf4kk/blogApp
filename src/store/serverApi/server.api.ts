@@ -24,6 +24,14 @@ export const serverApi = createApi({
             }),
             transformResponse: (response:IUser[]) => response[0]
         }),
+        updateUser: build.mutation<IUser, IUser>({  //1 аргумент - который мы ожидаем, второй тип - который мы отправим на сервер   //ENDPOINT
+            query: (user) => ({
+                url: `/posts/${user.id}`,   //id поста который мы хотим ОБНОВИТЬ в url
+                method: 'PUT', //При обновлений данных
+                body: user
+            }),
+              //Указываем что этот метод (createPost query) обеспечивает доставку данных (вообще можно обойтись обычным refetch() в компоненте)
+        }),
         pushUser: build.mutation<IUser, IUser>({
             query: (user) => ({
                 url: 'users',
@@ -33,7 +41,7 @@ export const serverApi = createApi({
             invalidatesTags: ['Users']
         }),
         fetchBlogs: build.query<IBlog[], number>({
-            query: (limit:number) => ({
+            query: (limit:number = 9) => ({
                 url: 'blogs',
                 params: {
                     _limit: limit
@@ -41,6 +49,14 @@ export const serverApi = createApi({
 
             }),
             providesTags: result => ['Blogs']
+        }),
+        updatePost: build.mutation<IBlog, IBlog>({  //1 аргумент - который мы ожидаем, второй тип - который мы отправим на сервер   //ENDPOINT
+            query: (blog) => ({
+                url: `/posts/${blog.id}`,   //id поста который мы хотим ОБНОВИТЬ в url
+                method: 'PUT', //При обновлений данных
+                body: blog
+            }),
+              //Указываем что этот метод (createPost query) обеспечивает доставку данных (вообще можно обойтись обычным refetch() в компоненте)
         }),
         fetchBlog: build.query<IBlog, string>({
             query: (search:string) => ({
@@ -61,4 +77,4 @@ export const serverApi = createApi({
         //<IUser[], string>
     })
 })
-export const {useFetchUsersQuery, useLazyFetchUserQuery, usePushUserMutation, useFetchBlogsQuery, useLazyFetchBlogQuery, useRemoveBlogMutation} = serverApi;
+export const {useFetchUsersQuery, useLazyFetchUserQuery, usePushUserMutation, useFetchBlogsQuery, useLazyFetchBlogQuery, useRemoveBlogMutation, useUpdatePostMutation, useUpdateUserMutation} = serverApi;

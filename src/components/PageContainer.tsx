@@ -14,12 +14,13 @@ const PageContainer:React.FC<Props> = ({setIsLoged, children}) => {
                 <a href = 'https://github.com/daf4kk' target= '_blank' rel = 'noreferrer'><img src = {logoIcon} alt = 'logo' className = 'cursor-pointer w-[50px] h-[50px] '></img></a>
                 <ul className='flex'>
                     <Link to = '/home' className='header-button'>Домой</Link>
-                    <Link to = 'favourites' className='header-button'>Любимые посты</Link>
+                    <Link to = 'favourites' className='header-button'>Избранное</Link>
                     <li className='header-button'>Мои посты</li>
                     <li className='header-button'>Создать пост</li>
                     <li className='header-button hover:bg-red-400' onClick = {() => {
                         localStorage.removeItem('active-user-email');
                         setIsLoged(null)
+                        // window.location.reload()
                     }}>Выйти</li>
                 </ul>
             </header>

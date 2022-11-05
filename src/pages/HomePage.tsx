@@ -1,6 +1,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import PageContainer from '../components/PageContainer';
 import { useFetchBlogsQuery, useFetchUsersQuery } from '../store/serverApi/server.api';
+import { useAppSelector } from '../hooks/useSelector';
 import { IUser } from '../types/serverModels';
 import {IBlog} from '../types/serverModels'
 import img1 from '../blogImgs/1.png';
@@ -11,6 +12,8 @@ import img5 from '../blogImgs/5.png';
 import img6 from '../blogImgs/6.png';
 import img7 from '../blogImgs/7.png';
 import BlogItem from '../components/BlogItem';
+import { useActions } from '../hooks/actions';
+import { is } from 'immer/dist/internal';
 
 interface Props{
     isLoged: null | IUser,
@@ -18,10 +21,12 @@ interface Props{
 }
 const HomePage:React.FC<Props> = ({setIsLoged, isLoged}) => {
 
+    const {addFavourite} = useActions();
 
+  const favourites = useAppSelector((state) => state.favourites)
+  console.log(favourites);
     const {data:blogs, isLoading, isError} = useFetchBlogsQuery(9);
-
-    // console.log(blogs1)
+    
     return (
         <PageContainer setIsLoged={setIsLoged}>
             <div className='w-[95%] h-auto mt-10 mb-20 text-black relative flex justify-center' >
@@ -40,7 +45,7 @@ const HomePage:React.FC<Props> = ({setIsLoged, isLoged}) => {
                     </div>
                 </div>
                 <div className="content mt-[450px] grid grid-cols-3 gap-5 ">
-                {blogs?.map((item:IBlog) => <BlogItem item = {item} key = {item.blogId}/>)}
+                {blogs?.map((blog:IBlog) => <BlogItem blog = {blog} activeUser = {isLoged}key = {blog.blogId}/>)}
                 </div>
                 <h1 className='absolute bottom-[-50px] text-xl transition-colors duration-200 hover:text-emerald-200 cursor-pointer'>Смотреть все посты</h1>
             </div>  

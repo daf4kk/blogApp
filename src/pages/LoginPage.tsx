@@ -8,17 +8,17 @@ import logoIcon from '../imgs/logo.png';
 import errorIcon from '../imgs/error.png';
 
 interface Props{
-    setIsLoged: Dispatch<SetStateAction<IUser | null>>
+    setIsLoged: Dispatch<SetStateAction<IUser | null>>,
+    users: IUser[]
 }
 
-const LoginPage:React.FC<Props> = ({setIsLoged}) => {
+const LoginPage:React.FC<Props> = ({setIsLoged, users}) => {
 
     // const {isLoading, isError, data} = useFetchUsersQuery('');
     // const {favourites} = useAppSelector(state => state.favourites)
     // const {addFavourite, removeFavourite} = useActions();
     
     const [error, setError] = useState<string | null>(null)
-    const {data:DBUsers} = useFetchUsersQuery('')
     const [userData, setUserData] = useState({
         email: '',
         password: ''
@@ -37,7 +37,7 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
             setError('Поля должны быть заполнены')
             return
         }
-        const user = DBUsers.find((user:IUser) => user.email === email)
+        const user = users.find((user:IUser) => user.email === email)
         if (!user){
             setError(`Пользователь не найден`);
             return
@@ -48,6 +48,8 @@ const LoginPage:React.FC<Props> = ({setIsLoged}) => {
         }
         setIsLoged(user)
         localStorage.setItem('active-user-email', email)
+        console.log('authed')
+
         return
     }
 

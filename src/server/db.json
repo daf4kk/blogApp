@@ -10,9 +10,7 @@
         "asd"
       ],
       "favouriteBlogs": [
-        "efgrg",
-        "efgrg5",
-        "efgrg8"
+        "efgrg1"
       ]
     },
     {
@@ -25,11 +23,9 @@
         "asd"
       ],
       "favouriteBlogs": [
-        "efgrg",
-        "efgrg5",
-        "efgrg8"
+        "efgrg2",
+        "efgrg3"
       ]
-      
     },
     {
       "email": "Ilya@mail.ru",
@@ -42,6 +38,14 @@
         "efgrg5",
         "efgrg8"
       ]
+    },
+    {
+      "email": "qwe@mail.ru",
+      "name": "qwe",
+      "password": "qwe",
+      "blogs": [],
+      "favouriteBlogs": [],
+      "id": 4
     }
   ],
   "blogs": [
@@ -146,7 +150,7 @@
     },
     {
       "id": 10,
-      "blogId": "efgrg10",
+      "blogId": "efgrg0",
       "ownerId": 1,
       "imgId": "2",
       "theme": "nextJS",
@@ -155,7 +159,5 @@
       "title": "Blog",
       "body": "lorem lorem"
     }
-    
-    
   ]
 }
